@@ -1,0 +1,11 @@
+name "sbylib-gl-example"
+description "A minimal D application."
+authors "sobaya"
+copyright "Copyright © 2019, sobaya"
+license "proprietary"
+
+targetType "executable"
+targetPath "bin"
+
+dependency "sbylib-gl" version="*"
+dependency "sbylib-glfw" version="*"

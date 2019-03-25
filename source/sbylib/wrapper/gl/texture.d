@@ -32,7 +32,7 @@ struct TextureBuilder {
 class Texture {
 
     package immutable TextureID id;
-    package immutable TextureTarget target;
+    immutable TextureTarget target;
 
     static void activate(uint unit) {
         GlFunction.activeTexture(unit);

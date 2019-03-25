@@ -65,8 +65,11 @@ class Framebuffer {
         }
     }
     do {
-        this.bind(FramebufferBindType.Read);
-        dst.bind(FramebufferBindType.Write);
-        GlFunction.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, filter, bit);
+        this.bind(FramebufferBindType.Write);
+        dst.bind(FramebufferBindType.Read);
+        GlFunction.blitFramebuffer(
+                srcX0, srcY0, srcX1, srcY1,
+                dstX0, dstY0, dstX1, dstY1,
+                filter, bit);
     }
 }

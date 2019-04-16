@@ -18,7 +18,7 @@ class Buffer(T) {
         GlUtils.deleteBuffer(id);
     }
     
-    void sendData(T[] data, BufferTarget target, BufferUsage usage = BufferUsage.Static) const {
+    void sendData(const T[] data, BufferTarget target, BufferUsage usage = BufferUsage.Static) const {
         this.bind(target);
         GlFunction.bufferData!(T)(target, data.length * T.sizeof, data.ptr, usage);
     }

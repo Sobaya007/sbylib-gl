@@ -102,12 +102,12 @@ static:
         glBindBuffer(target, id);
     }
 
-    void bufferData(Type)(BufferTarget target, size_t size, Type* data, BufferUsage usage) {
+    void bufferData(Type)(BufferTarget target, size_t size, const Type* data, BufferUsage usage) {
         glBufferData(target, size, data, usage);
     }
 
-    void bufferSubData(Type)(BufferTarget target, size_t offset, size_t size, Type* data) {
-        glBufferSubData(target, offset, size, cast(void*)data);
+    void bufferSubData(Type)(BufferTarget target, size_t offset, size_t size, const Type* data) {
+        glBufferSubData(target, offset, size, data);
     }
 
     void* mapBuffer(BufferTarget target, BufferAccess access) {

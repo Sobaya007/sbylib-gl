@@ -28,7 +28,8 @@ enum Primitive {
     Point = GL_POINTS,
     Line = GL_LINES,
     LineLoop = GL_LINE_LOOP,
-    LineStrip = GL_LINE_STRIP
+    LineStrip = GL_LINE_STRIP,
+    Patch = GL_PATCHES
 }
 
 enum BlendEquation {
@@ -135,7 +136,9 @@ enum ShaderType {
     Vertex = GL_VERTEX_SHADER,
     Fragment = GL_FRAGMENT_SHADER,
     Geometry = GL_GEOMETRY_SHADER,
-    Compute = GL_COMPUTE_SHADER
+    Compute = GL_COMPUTE_SHADER,
+    TessControl = GL_TESS_CONTROL_SHADER,
+    TessEvaluation = GL_TESS_EVALUATION_SHADER
 }
 
 enum ShaderParamName {
@@ -164,6 +167,12 @@ enum ProgramParamName {
     GeometryVerticesOut = GL_GEOMETRY_VERTICES_OUT,
     GeometryInputType = GL_GEOMETRY_INPUT_TYPE,
     GeometryOutputType = GL_GEOMETRY_OUTPUT_TYPE
+}
+
+enum PatchParamName {
+    Vertices = GL_PATCH_VERTICES,
+    DefaultOuterLevel = GL_PATCH_DEFAULT_OUTER_LEVEL,
+    DefaultInnerLevel = GL_PATCH_DEFAULT_INNER_LEVEL
 }
 
 enum BufferTarget {
@@ -458,6 +467,7 @@ enum ParamName {
     MaxIntegerSamples = GL_MAX_INTEGER_SAMPLES,
     MinMapBufferAlignment = GL_MIN_MAP_BUFFER_ALIGNMENT,
     MaxLabelLength = GL_MAX_LABEL_LENGTH,
+    MaxPatchVertices = GL_MAX_PATCH_VERTICES,
     MaxProgramTexelOffset = GL_MAX_PROGRAM_TEXEL_OFFSET,
     MinProgramTexelOffset = GL_MIN_PROGRAM_TEXEL_OFFSET,
     MaxRectangleTextureSize = GL_MAX_RECTANGLE_TEXTURE_SIZE,

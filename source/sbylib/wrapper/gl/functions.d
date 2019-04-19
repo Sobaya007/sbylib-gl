@@ -416,6 +416,14 @@ static:
             alias getTexLevelParamFunction = glGetTexLevelParameterfv;
     }
 
+    void setPatchParameter(PatchParamName param, int value) {
+        glPatchParameteri(param, value);
+    }
+
+    void setPatchParameter(size_t N)(PatchParamName param, float[N] value) {
+        glPatchParameterfv(param, value.ptr);
+    }
+
     void uniform(T, size_t N)(UniformLoc loc, uint num, T* ptr) 
         if (1 <= N && N <= 4)
     {

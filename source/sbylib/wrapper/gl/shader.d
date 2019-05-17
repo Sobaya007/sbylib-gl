@@ -11,16 +11,16 @@ class Shader {
     package immutable ShaderID id;
 
     this(ShaderType type) {
-        this.id = GlFunction.createShader(type);
+        this.id = GlFunction().createShader(type);
     }
 
     void destroy() const {
-        GlFunction.deleteShader(id);
+        GlFunction().deleteShader(id);
     }
 
     string source(string source) const {
-        GlUtils.shaderSource(id, source);
-        GlFunction.compileShader(id);
+        GlUtils().shaderSource(id, source);
+        GlFunction().compileShader(id);
         assert(this.compileSuccess(), getLogString(source));
         return source;
     }
@@ -69,7 +69,7 @@ class Shader {
     private string getInfoLog() const {
         auto logLength = getLogLength();
         char[] log = new char[logLength];
-        GlFunction.getShaderInfoLog(id, logLength, &logLength, &log[0]);
+        GlFunction().getShaderInfoLog(id, logLength, &logLength, &log[0]);
 
         return log.to!string;
     }
@@ -83,6 +83,6 @@ class Shader {
     }
 
     private int getInfo(ShaderParamName name) const {
-        return GlFunction.getShader!(int,1)(id, name)[0];
+        return GlFunction().getShader!(int,1)(id, name)[0];
     }
 }

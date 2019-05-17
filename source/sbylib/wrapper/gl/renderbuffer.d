@@ -8,7 +8,7 @@ class Renderbuffer {
     package immutable int id;
 
     this() {
-        this.id = GlUtils.genRenderbuffer();
+        this.id = GlUtils().genRenderbuffer();
     }
 
     this(uint width, uint height, TextureInternalFormat format) {
@@ -17,25 +17,25 @@ class Renderbuffer {
     }
 
     void destroy() {
-        GlUtils.deleteRenderbuffer(id);
+        GlUtils().deleteRenderbuffer(id);
     }
 
     void bind() {
-        GlFunction.bindRenderbuffer(this.id);
+        GlFunction().bindRenderbuffer(this.id);
     }
 
     void allocate(uint width, uint height, TextureInternalFormat format) {
         bind();
-        GlFunction.renderbufferStorage(width, height, format);
+        GlFunction().renderbufferStorage(width, height, format);
     }
 
     void attachFramebuffer(FramebufferBindType bindType, FramebufferAttachType attachType) {
         bind();
-        GlFunction.framebufferRenderbuffer(bindType, attachType, this.id);
+        GlFunction().framebufferRenderbuffer(bindType, attachType, this.id);
     }
 
     void detachFramebuffer(FramebufferBindType bindType, FramebufferAttachType attachType) {
         bind();
-        GlFunction.framebufferRenderbuffer(bindType, attachType, 0);
+        GlFunction().framebufferRenderbuffer(bindType, attachType, 0);
     }
 }

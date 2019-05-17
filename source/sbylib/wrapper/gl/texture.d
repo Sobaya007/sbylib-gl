@@ -16,7 +16,7 @@ struct TextureBuilder {
     uint unpackAlign = 4;
 
     Texture build(Type)(Type[] data) {
-        GlFunction.setPixelUnpackAlign(unpackAlign);
+        GlFunction().setPixelUnpackAlign(unpackAlign);
         return new Texture(this.target, this.mipmapLevel, this.iformat, width, height, this.format, data.ptr);
     }
 
@@ -35,11 +35,11 @@ class Texture {
     immutable TextureTarget target;
 
     static void activate(uint unit) {
-        GlFunction.activeTexture(unit);
+        GlFunction().activeTexture(unit);
     }
 
     this(TextureTarget target) {
-        this.id = GlUtils.genTexture();
+        this.id = GlUtils().genTexture();
         this.target = target;
         this.magFilter = TextureFilter.Linear;
         this.minFilter = TextureFilter.Linear;
@@ -53,7 +53,7 @@ class Texture {
     }
 
     void destroy() {
-        GlUtils.deleteTexture(id);
+        GlUtils().deleteTexture(id);
     }
 
     void allocate(Type)(uint mipmapLevel, TextureInternalFormat iformat,
@@ -62,7 +62,7 @@ class Texture {
     in(this.target != TextureTarget.ProxyRect || mipmapLevel == 0)
     {
         bind();
-        GlFunction.texImage2D!(Type)(this.target, mipmapLevel, iformat, width, height, 0, format, data);
+        GlFunction().texImage2D!(Type)(this.target, mipmapLevel, iformat, width, height, 0, format, data);
     }
 
     void update(Type)(uint mipmapLevel, Type *data) {
@@ -71,7 +71,7 @@ class Texture {
 
     void update(Type)(uint mipmapLevel, int offsetX, int offsetY, uint width, uint height, TextureFormat format, Type *data) {
         bind();
-        GlFunction.texSubImage2D!(Type)(this.target, mipmapLevel, offsetX, offsetY, width, height, format, data);
+        GlFunction().texSubImage2D!(Type)(this.target, mipmapLevel, offsetX, offsetY, width, height, format, data);
     }
 
     int width() {
@@ -146,33 +146,33 @@ class Texture {
 
     void blitsTo(T)(T[] result, TextureFormat format, int level = 0) {
         bind();
-        GlFunction.getTexImage!(T)(target, level, format, result.ptr);
+        GlFunction().getTexImage!(T)(target, level, format, result.ptr);
     }
 
     void bind() const {
-        GlFunction.bindTexture(target, id);
+        GlFunction().bindTexture(target, id);
     }
 
     void bindForCompute(TextureUnit unit, uint level, uint layer, BufferAccess access, TextureInternalFormat iformat) {
-        GlFunction.bindImageTexture(unit, id, level, GL_FALSE, layer, access, iformat);
+        GlFunction().bindImageTexture(unit, id, level, GL_FALSE, layer, access, iformat);
     }
 
     void bindForCompute(TextureUnit unit, uint level, BufferAccess access, TextureInternalFormat iformat) {
-        GlFunction.bindImageTexture(unit, id, level, GL_TRUE, 0, access, iformat);
+        GlFunction().bindImageTexture(unit, id, level, GL_TRUE, 0, access, iformat);
     }
 
     private T[N] getParameter(T,size_t N)(TextureLevelParamName pname) {
         bind();
-        return GlFunction.getTexLevelParameter!(T,N)(target, 0, pname);
+        return GlFunction().getTexLevelParameter!(T,N)(target, 0, pname);
     }
 
     private T[N] getParameter(T,size_t N)(TextureParamName pname) {
         bind();
-        return GlFunction.getTexParameter!(T,N)(target, pname);
+        return GlFunction().getTexParameter!(T,N)(target, pname);
     }
 
     private void setParameter(T)(TextureParamName pname, T value) {
         bind();
-        GlFunction.setTexParameter!(T)(target, pname, value);
+        GlFunction().setTexParameter!(T)(target, pname, value);
     }
 }

@@ -8,24 +8,24 @@ class VertexArray {
     private immutable VertexArrayID id;
 
     this() {
-        this.id = GlUtils.genVertexArray();
+        this.id = GlUtils().genVertexArray();
     }
 
     void destroy() {
-        GlUtils.deleteVertexArray(id);
+        GlUtils().deleteVertexArray(id);
     }
 
     void enable(AttribLoc location) {
         bind();
-        GlFunction.enableVertexAttribArray(location);
+        GlFunction().enableVertexAttribArray(location);
     }
 
     void disable(AttribLoc location) {
         bind();
-        GlFunction.disableVertexAttribArray(location);
+        GlFunction().disableVertexAttribArray(location);
     }
 
     void bind() const {
-        GlFunction.bindVertexArray(id);
+        GlFunction().bindVertexArray(id);
     }
 }

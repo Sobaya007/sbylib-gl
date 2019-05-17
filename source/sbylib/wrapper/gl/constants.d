@@ -348,7 +348,7 @@ enum TextureWrap {
     MirroredRepeat = GL_MIRRORED_REPEAT
 }
 
-enum GlErrorType {
+enum ErrorType {
     NoError = GL_NO_ERROR,
     InvalidEnum = GL_INVALID_ENUM,
     InvalidValue = GL_INVALID_VALUE,
@@ -368,6 +368,70 @@ enum FramebufferStatus {
     IncompleteMultisample = GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE,
     IncompleteLayerTargets = GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS
 
+}
+
+enum ProgramInterface {
+    Uniform = GL_UNIFORM,
+    UniformBlock = GL_UNIFORM_BLOCK,
+    AtomicCounterBuffer = GL_ATOMIC_COUNTER_BUFFER,
+    ProgramInput = GL_PROGRAM_INPUT,
+    ProgramOutput = GL_PROGRAM_OUTPUT,
+    VertexSubroutine = GL_VERTEX_SUBROUTINE,
+    TessControlSubroutine = GL_TESS_CONTROL_SUBROUTINE,
+    TessEvaluationSubroutine = GL_TESS_EVALUATION_SUBROUTINE,
+    GeometrySubroutine = GL_GEOMETRY_SUBROUTINE,
+    FragmentSubroutine = GL_FRAGMENT_SUBROUTINE,
+    ComputeSubroutine = GL_COMPUTE_SUBROUTINE,
+    VertexSubroutineUniform = GL_VERTEX_SUBROUTINE_UNIFORM,
+    TessControlSubroutineUniform = GL_TESS_CONTROL_SUBROUTINE_UNIFORM,
+    TessEvaluationSubroutineUniform = GL_TESS_EVALUATION_SUBROUTINE_UNIFORM,
+    GeometrySubroutineUniform = GL_GEOMETRY_SUBROUTINE_UNIFORM,
+    FragmentSubroutineUniform = GL_FRAGMENT_SUBROUTINE_UNIFORM,
+    ComputeSubroutineUniform = GL_COMPUTE_SUBROUTINE_UNIFORM,
+    TransformFeedbackVarying = GL_TRANSFORM_FEEDBACK_VARYING,
+    BufferVariable = GL_BUFFER_VARIABLE,
+    ShaderStorageBlock = GL_SHADER_STORAGE_BLOCK,
+    TransformFeedbackBuffer = GL_TRANSFORM_FEEDBACK_BUFFER
+}
+
+enum ProgramInterfaceParamName {
+    ActiveResources = GL_ACTIVE_RESOURCES,
+    MaxNameLength = GL_MAX_NAME_LENGTH,
+    MaxNumActiveVariables = GL_MAX_NUM_ACTIVE_VARIABLES,
+    MaxNumCompatibleSubroutines = GL_MAX_NUM_COMPATIBLE_SUBROUTINES
+}
+
+enum ProgramInterfaceProperty {
+    NameLength = GL_NAME_LENGTH,
+    Type = GL_TYPE,
+    ArraySize = GL_ARRAY_SIZE,
+    Offset = GL_OFFSET,
+    BlockIndex = GL_BLOCK_INDEX,
+    ArrayStride = GL_ARRAY_STRIDE,
+    MatrixStride = GL_MATRIX_STRIDE,
+    IsRowMajor = GL_IS_ROW_MAJOR,
+    AtomicCounterBufferIndex = GL_ATOMIC_COUNTER_BUFFER_INDEX,
+    TextureBuffer = GL_TEXTURE_BUFFER,
+    BufferBinding = GL_BUFFER_BINDING,
+    BufferDataSize = GL_BUFFER_DATA_SIZE,
+    NumActiveVariables = GL_NUM_ACTIVE_VARIABLES,
+    ActiveVariables = GL_ACTIVE_VARIABLES,
+    ReferencedByVertexShader = GL_REFERENCED_BY_VERTEX_SHADER,
+    ReferencedByTessControlShader = GL_REFERENCED_BY_TESS_CONTROL_SHADER,
+    ReferencedByTessEvaluationShader = GL_REFERENCED_BY_TESS_EVALUATION_SHADER,
+    ReferencedByGeometryShader = GL_REFERENCED_BY_GEOMETRY_SHADER,
+    ReferencedByFragmentShader = GL_REFERENCED_BY_FRAGMENT_SHADER,
+    ReferencedByComputeShader = GL_REFERENCED_BY_COMPUTE_SHADER,
+    NumCompatibleSubroutines = GL_NUM_COMPATIBLE_SUBROUTINES,
+    CompatibleSubroutines = GL_COMPATIBLE_SUBROUTINES,
+    TopLevelArraySize = GL_TOP_LEVEL_ARRAY_SIZE,
+    TopLevelArrayStride = GL_TOP_LEVEL_ARRAY_STRIDE,
+    Location = GL_LOCATION,
+    LocationIndex = GL_LOCATION_INDEX,
+    IsPerPatch = GL_IS_PER_PATCH,
+    LocationComponent = GL_LOCATION_COMPONENT,
+    TransformFeedbackBufferIndex = GL_TRANSFORM_FEEDBACK_BUFFER_INDEX,
+    TransformFeedbackBufferStride = GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE
 }
 
 enum PixelAlignType {

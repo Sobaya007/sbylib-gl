@@ -477,7 +477,7 @@ struct GlFunction {
         if (1 <= N && N <= 4)
     {
         import std.format;
-        mixin(format!"glUniformMatrix%d%sv"(N, getUniformTypeCharacter!(T)))(loc, num, true, ptr);
+        mixin(format!"glUniformMatrix%d%sv"(N, getUniformTypeCharacter!(T)))(loc, num, false, ptr);
     }
 
     import std.traits : Unqual;
